@@ -15,37 +15,34 @@ const int MAXN = 2e5 + 5;
 
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, q;
+    cin >> n >> q;
     string s;
     cin >> s;
-    int res = 0;
-    for (auto c : s)
+    while (q--)
     {
-        if ((c - '0') & 1)
+        int l, r;
+        cin >> l >> r;
+        l--, r--;
+        bool bad = true;
+        for (int i = 0; i < l and bad; i++)
         {
-            res++;
+            if (s[i] == s[l])
+            {
+                bad = false;
+            }
         }
-    }
-    if (res <= 1)
-    {
-        cout << -1 << endl;
-        return;
-    }
-    int count = 0;
-    for (auto c : s)
-    {
-        if ((c - '0') & 1)
+
+        for (int i = r + 1; i < n and bad; i++)
         {
-            cout << c;
-            count++;
+            if (s[i] == s[r])
+            {
+                bad = false;
+            }
         }
-        if (count == 2)
-        {
-            break;
-        }
+
+        cout << (bad ? "NO" : "YES") << endl;
     }
-    cout << endl;
 }
 
 int32_t main()
