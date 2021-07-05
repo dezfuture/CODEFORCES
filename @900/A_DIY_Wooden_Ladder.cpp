@@ -17,32 +17,20 @@ void solve()
 {
     int n;
     cin >> n;
-    int a[n];
+    vector<int> v;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        int c;
+        cin >> c;
+        v.pb(c);
     }
 
-    string s = "";
-    int c = a[n - 1];
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if (a[i] >= c)
-        {
-            c = a[i];
-        }
-        if (c > 0 && c >= a[i])
-        {
-            s += "1 ";
-            c--;
-        }
-        else
-        {
-            s += "0 ";
-        }
-    }
-    reverse(s.begin(), s.end());
-    cout << s << endl;
+    sort(v.begin(), v.end());
+    // int a = v[n - 1];
+    // int b = v[n - 2];
+
+    cout << min(n - 2, v[n - 2] - 1) << endl;
+    return;
 }
 
 int32_t main()
@@ -55,5 +43,6 @@ int32_t main()
     {
         solve();
     }
+
     return 0;
 }

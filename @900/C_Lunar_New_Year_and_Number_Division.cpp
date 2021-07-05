@@ -15,45 +15,40 @@ const int MAXN = 2e5 + 5;
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    int a[n];
-    for (int i = 0; i < n; i++)
+    ll a[n];
+    for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
 
-    string s = "";
-    int c = a[n - 1];
-    for (int i = n - 1; i >= 0; i--)
+    sort(a, a + n);
+    vector<pii> v;
+    for (ll i = 0, j = n - 1; i < n / 2, j >= n / 2; i++, j--)
     {
-        if (a[i] >= c)
-        {
-            c = a[i];
-        }
-        if (c > 0 && c >= a[i])
-        {
-            s += "1 ";
-            c--;
-        }
-        else
-        {
-            s += "0 ";
-        }
+        v.pb({a[i], a[j]});
     }
-    reverse(s.begin(), s.end());
-    cout << s << endl;
+
+    ll sum = 0;
+    for (ll i = 0; i < n / 2; i++)
+    {
+        sum += v[i].first * v[i].first + 2 * v[i].second * v[i].first + v[i].second * v[i].second;
+    }
+
+    cout << sum << endl;
 }
 
 int32_t main()
 {
     fast_io;
 
-    int t;
-    cin >> t;
+    ll t = 1;
+    // cin >> t;
     while (t--)
     {
         solve();
     }
+
     return 0;
 }
