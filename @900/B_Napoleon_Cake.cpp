@@ -35,22 +35,22 @@ void solve()
                 ans[m--] = 1;
             }
         }
+        // }just testing
+        for (int i = 0; i < n; i++)
+        {
+            cout << ans[i] << " ";
+        }
     }
-    for (int i = 0; i < n; i++)
-    {
-        cout << ans[i] << " ";
-    }
-}
 
-int32_t main()
-{
-    fast_io;
-
-    int t;
-    cin >> t;
-    while (t--)
+    int32_t main()
     {
-        solve();
+        fast_io;
+
+        int t;
+        cin >> t;
+        while (t--)
+        {
+            solve();
+        }
+        return 0;
     }
-    return 0;
-}
