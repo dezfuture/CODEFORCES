@@ -17,10 +17,20 @@ void solve()
 {
     int n, k;
     cin >> n >> k;
-    int a[n];
+    vector<int> arr(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    int kp = n - k;
+    if (kp < 0)
+    {
+        cout << -1 << endl;
+    }
+    else
+    {
+        cout << arr[kp] << " " << 0 << endl;
     }
 }
 
