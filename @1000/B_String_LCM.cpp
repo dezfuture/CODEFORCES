@@ -119,9 +119,9 @@ void solve()
         flag = false;
     }
     if (flag)
-        cout << ans << "\n";
+        cout << ans << endl;
     else
-        cout << "-1\n";
+        cout << -1 << endl;
 }
 
 int32_t main()
