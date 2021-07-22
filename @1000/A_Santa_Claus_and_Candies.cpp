@@ -50,38 +50,48 @@ int lcm(int a, int b)
     return (a / c) * b;
 }
 
+void sieve(int n, bool isPrime[])
+{
+    isPrime[0] = isPrime[1] = false;
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (isPrime[i])
+        {
+            for (int j = i * i; j <= n; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
-    vector<vector<int>> v(n, vector<int>(m));
-    for (int i = 0; i < n; i++)
+    int n;
+    cin >> n;
+
+    vector<int> v;
+
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j < m; j++)
+        if (i > n)
         {
-            cin >> v[i][j];
+            break;
         }
+        n -= i;
+        v.pb(i);
     }
 
-    for (int i = 0; i < m; i++)
-    {
-        if (v[0][i] == 1 || v[n - 1][i] == 1)
-        {
-            cout << 2;
-            return;
-        }
-    }
+    // reverse(v.begin(), v.end());
 
-    for (int i = 0; i < n; i++)
-    {
-        if (v[i][0] == 1 || v[i][m - 1] == 1)
-        {
-            cout << 2;
-            return;
-        }
-    }
+    int len = v.size();
+    v[len - 1] += n;
 
-    cout << 4 << endl;
+    cout << len << endl;
+    for (int i = 0; i != len; i++)
+    {
+        cout << v[i] << " ";
+    }
 }
 
 int32_t main()
