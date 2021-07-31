@@ -67,24 +67,30 @@ int lcm(int a, int b)
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    int dp[150005] = {0};
-    for (int i = 1; i <= n; i++)
+    int n;
+    cin >> n;
+    int a = 0, b = 0, c = 0;
+    for (int i = 0; i < n; i++)
     {
-        cin >> dp[i];
-        dp[i] += dp[i - 1];
+        int x;
+        cin >> x;
+        a += x;
+    }
+    for (int i = 0; i < n - 1; i++)
+    {
+        int x;
+        cin >> x;
+        b += x;
+    }
+    for (int i = 0; i < n - 2; i++)
+    {
+        int x;
+        cin >> x;
+        c += x;
     }
 
-    int res = 0;
-    for (int j = 1; j <= n - k; j++)
-    {
-        if (dp[res + k] - dp[res] > dp[j + k] - dp[j])
-        {
-            res = j;
-        }
-    }
-    cout << res + 1 << endl;
+    cout << (a - b) << endl
+         << (b - c);
 }
 
 int32_t main()
