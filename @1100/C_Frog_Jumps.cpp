@@ -67,21 +67,29 @@ int lcm(int a, int b)
 
 void solve()
 {
-    int n;
-    cin >> n;
+    string s;
+    cin >> s;
     int res = 0;
+    int n = s.size();
+    int a[n + 2] = {0};
+    a[0] = 1;
+    a[n + 1] = 1;
 
-    int i;
-    while (n > 1)
+    for (int i = 1; i <= n; i++)
     {
-        i = 1;
-        while ((3 * i * i + i) / 2 <= n)
+        if (s[i - 1] == 'R')
         {
-            i++;
+            a[i] = 1;
         }
-        i--;
-        res++;
-        n -= (3 * i * i + i) / 2;
+    }
+    int l = 0;
+    for (int i = 1; i <= n + 1; i++)
+    {
+        if (a[i])
+        {
+            res = max(res, i - l);
+            l = i;
+        }
     }
     cout << res << endl;
 }

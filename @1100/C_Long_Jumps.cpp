@@ -69,20 +69,29 @@ void solve()
 {
     int n;
     cin >> n;
+    int a[n + 1];
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+    }
+
     int res = 0;
 
-    int i;
-    while (n > 1)
+    int dp[MAXN] = {0};
+    for (int i = n; i >= 1; i--)
     {
-        i = 1;
-        while ((3 * i * i + i) / 2 <= n)
+        if (i + a[i] > n)
         {
-            i++;
+            dp[i] = a[i];
         }
-        i--;
-        res++;
-        n -= (3 * i * i + i) / 2;
+        else
+        {
+            dp[i] = a[i] + dp[i + a[i]];
+        }
+
+        res = max(res, dp[i]);
     }
+
     cout << res << endl;
 }
 
@@ -99,3 +108,14 @@ int32_t main()
 
     return 0;
 }
+
+// inline int read()
+// {
+//     int x = 0;
+//     char c = getchar();
+//     while (c < '0' || c > '9')
+//         c = getchar();
+//     while (c >= '0' && c <= '9')
+//         x = x * 10 + c - '0', c = getchar();
+//     return x;
+// }

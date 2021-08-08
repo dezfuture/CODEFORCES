@@ -69,21 +69,40 @@ void solve()
 {
     int n;
     cin >> n;
-    int res = 0;
-
-    int i;
-    while (n > 1)
+    vector<int> v(n);
+    for (auto &x : v)
     {
-        i = 1;
-        while ((3 * i * i + i) / 2 <= n)
-        {
-            i++;
-        }
-        i--;
-        res++;
-        n -= (3 * i * i + i) / 2;
+        cin >> x;
     }
-    cout << res << endl;
+
+    int k = 0;
+    while (k < n && v[k] == 1)
+    {
+        k++;
+    }
+
+    if (k == n)
+    {
+        if (k & 1)
+        {
+            cout << "First" << endl;
+        }
+        else
+        {
+            cout << "Second" << endl;
+        }
+    }
+    else if (k < n)
+    {
+        if (k & 1)
+        {
+            cout << "Second" << endl;
+        }
+        else
+        {
+            cout << "First" << endl;
+        }
+    }
 }
 
 int32_t main()
