@@ -78,9 +78,25 @@ int calc(int n)
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int x, y;
+    ll n, d;
+    cin >> n >> d;
+    if (d <= n)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        ll x = n / 2;
+        double res = (double)d / (double)(x + 1);
+        if (x + res <= n)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
+    }
 }
 
 int32_t main()

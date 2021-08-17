@@ -78,9 +78,22 @@ int calc(int n)
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int x, y;
+    int n;
+    cin >> n;
+    int count = 0, sum = 1;
+    if (n == 1)
+    {
+        cout << count << endl;
+        return;
+    }
+
+    int temp = sqrt(n);
+    for (int i = 1; i <= temp; i++)
+    {
+        count = (n - 1) / i;
+        sum = i + count - 1;
+    }
+    cout << sum << endl;
 }
 
 int32_t main()

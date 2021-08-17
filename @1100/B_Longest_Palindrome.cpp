@@ -78,17 +78,54 @@ int calc(int n)
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int x, y;
+    int n, m;
+    cin >> n >> m;
+    set<string> s;
+    string collection[105];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> collection[i];
+        s.insert(collection[i]);
+    }
+
+    vector<string> left, right;
+    string mid;
+    for (int i = 0; i < n; i++)
+    {
+        string res = collection[i];
+        std::reverse(res.begin(), res.end());
+        if (res == collection[i])
+        {
+            mid = res;
+        }
+        else if (s.find(res) != s.end())
+        {
+            right.push_back(res);
+            left.push_back(collection[i]);
+            s.erase(res);
+            s.erase(collection[i]);
+        }
+    }
+
+    cout << left.size() * 2 * m + mid.size() << endl;
+    reverse(right.begin(), right.end());
+    for (int i = 0; i < left.size(); i++)
+    {
+        cout << left[i];
+    }
+    cout << mid;
+    for (int i = 0; i < right.size(); i++)
+    {
+        cout << right[i];
+    }
 }
 
 int32_t main()
 {
     fast_io;
 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--)
     {
         solve();

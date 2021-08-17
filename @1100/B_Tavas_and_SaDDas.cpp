@@ -78,17 +78,53 @@ int calc(int n)
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int x, y;
+    ll n;
+    cin >> n;
+    queue<int> v;
+    if (n == 4)
+    {
+        cout << 1;
+    }
+    else if (n == 7)
+    {
+        cout << 2;
+    }
+    else
+    {
+        v.push(4);
+        v.push(7);
+        int count = 2;
+
+        while (true)
+        {
+            int num = v.front();
+            v.pop();
+            int num1 = num * 10 + 4;
+            v.push(num1);
+
+            if (num1 == n)
+            {
+                cout << count + 1 << endl;
+                break;
+            }
+            int num2 = num * 10 + 7;
+            if (num2 == n)
+            {
+                cout << count + 2 << endl;
+                break;
+            }
+            v.push(num2);
+            count += 2;
+        }
+    }
 }
 
 int32_t main()
 {
     fast_io;
 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--)
     {
         solve();

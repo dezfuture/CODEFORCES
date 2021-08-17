@@ -78,9 +78,16 @@ int calc(int n)
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int x, y;
+    ll a, b;
+    cin >> a >> b;
+
+    ll res = 0;
+    for (ll x = 9; x <= b; x = 10 * x + 9)
+    {
+        res += a;
+    }
+
+    cout << res << endl;
 }
 
 int32_t main()
