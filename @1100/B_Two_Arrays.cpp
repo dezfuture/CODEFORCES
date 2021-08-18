@@ -78,32 +78,61 @@ int calc(int n)
 
 void solve()
 {
-    string s;
-    cin >> s;
-    int len = s.length();
-    int res = 0;
+    ll n, t;
+    cin >> n >> t;
 
-    for (int i = 0; i < len; i++)
+    ll a[n + 1];
+    for (ll i = 1; i <= n; i++)
     {
-        if (res && s[i] == 'B')
+        cin >> a[i];
+    }
+
+    map<ll, ll> c;
+    map<ll, ll> d;
+
+    for (int i = 1; i <= n; i++)
+    {
+        ll x = a[i];
+        if (c[t - x] <= d[t - x])
         {
-            res--;
+            c[x]++;
         }
         else
         {
-            res++;
+            d[x]++;
         }
     }
-    cout << res << endl;
+
+    ll res[n + 1] = {0};
+    for (int i = 1; i <= n; i++)
+    {
+        ll x = a[i];
+        if (c[x])
+        {
+            res[i] = 0;
+            c[x]--;
+        }
+        else
+        {
+            res[i] = 1;
+            d[x]--;
+        }
+    }
+
+    for (ll i = 1; i <= n; i++)
+    {
+        cout << res[i] << " ";
+    }
+    cout << endl;
 }
 
 int32_t main()
 {
     fast_io;
 
-    int t;
-    cin >> t;
-    while (t--)
+    int test;
+    cin >> test;
+    while (test--)
     {
         solve();
     }
