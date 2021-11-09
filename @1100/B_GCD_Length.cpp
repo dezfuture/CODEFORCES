@@ -76,11 +76,38 @@ int calc(int n)
     return res;
 }
 
+int check(ll x)
+{
+    int a = 0;
+    for (; x > 0; x /= 10)
+    {
+        a++;
+    }
+    return a;
+}
+
 void solve()
 {
     int a, b, c;
     cin >> a >> b >> c;
-    int x, y;
+    ll x, y, z = 1;
+    c -= 1;
+    while (c--)
+    {
+        z *= 10;
+    }
+
+    x = y = z;
+    while (check(x) < a)
+    {
+        x *= 7;
+    }
+    while (check(y) < b)
+    {
+        y *= 3;
+    }
+
+    cout << x << " " << y << endl;
 }
 
 int32_t main()
