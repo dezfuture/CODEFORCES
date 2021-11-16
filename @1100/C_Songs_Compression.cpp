@@ -78,25 +78,48 @@ int calc(int n)
 
 void solve()
 {
-    ull n;
-    ll x, y;
-    cin >> x >> y;
+    ll n, m;
+    cin >> n >> m;
 
-    if (x > y)
+    ll sum = 0;
+
+    vector<pii> v(n);
+
+    for (int i = 0; i < n; i++)
     {
-        cout << x + y << endl;
-        return;
+        cin >> v[i].first >> v[i].second;
+        sum += v[i].first;
     }
 
-    cout << y - y % x / 2 << endl;
+    sort(v.begin(), v.end(), [&](pii a, pii b)
+         { return a.first - a.second > b.first - b.second; });
+
+    for (int i = 0; i < n; i++)
+    {
+        if (sum <= m)
+        {
+            cout << i << endl;
+            return;
+        }
+        sum -= v[i].first - v[i].second;
+    }
+
+    if (sum <= m)
+    {
+        cout << n << endl;
+    }
+    else
+    {
+        cout << -1 << endl;
+    }
 }
 
 int32_t main()
 {
     fast_io;
 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--)
     {
         solve();
